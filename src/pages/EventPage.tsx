@@ -53,7 +53,7 @@ function EventPage() {
   return (
     <div className="space-y-6">
       <div className="rounded-xl overflow-hidden">
-        <img src={event.image} alt={event.name} className="w-full max-h-80 object-cover" />
+        <img src={event.bannerUrl} alt={event.name} className="w-full max-h-80 object-cover" />
       </div>
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
         <div className="lg:col-span-2 space-y-4">

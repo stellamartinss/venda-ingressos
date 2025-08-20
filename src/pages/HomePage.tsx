@@ -102,7 +102,7 @@ function HomePage() {
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
         {filtered.map((ev) => (
           <div key={ev.id} className="rounded-xl border bg-white dark:bg-gray-800 overflow-hidden shadow-sm">
-            <img src={ev.image} alt={ev.name} className="h-40 w-full object-cover" />
+            <img src={ev.bannerUrl} alt={ev.name} className="h-40 w-full object-cover" />
             <div className="p-4 space-y-2">
               <h3 className="font-medium">{ev.name}</h3>
               <p className="text-xs opacity-70">{ev.category}</p>

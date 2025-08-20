@@ -18,7 +18,7 @@ export type Event = {
   description: string
   location: string
   dateTime: string
-  image: string
+  bannerUrl: string
   category: string
   organizerId: string
 }

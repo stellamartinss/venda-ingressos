@@ -13,7 +13,7 @@ function NewEventPage() {
   const [name, setName] = useState('')
   const [description, setDescription] = useState('')
   const [location, setLocation] = useState('')
-  const [date, setDate] = useState('')
+  const [dateTime, setDateTime] = useState('')
   const [image, setImage] = useState('')
   const [category, setCategory] = useState('')
   const [tickets, setTickets] = useState<TicketInput[]>([{ name: 'Pista', price: 50, quantity: 100 }])
@@ -48,7 +48,7 @@ function NewEventPage() {
         name,
         description,
         location,
-        date,
+        dateTime: dateTime,
         image: image || 'https://images.unsplash.com/photo-1521737604893-d14cc237f11d?q=80&w=1600&auto=format&fit=crop',
         category: category || 'Outros',
         tickets: tickets.map(t => ({
@@ -81,7 +81,7 @@ function NewEventPage() {
           <input required placeholder="Nome do evento" value={name} onChange={(e)=>setName(e.target.value)} className="rounded-md border px-3 py-2 bg-white dark:bg-gray-900" />
           <input required placeholder="Categoria (ex.: Música, Tecnologia)" value={category} onChange={(e)=>setCategory(e.target.value)} className="rounded-md border px-3 py-2 bg-white dark:bg-gray-900" />
           <input required placeholder="Local (Cidade, UF)" value={location} onChange={(e)=>setLocation(e.target.value)} className="rounded-md border px-3 py-2 bg-white dark:bg-gray-900" />
-          <input required type="datetime-local" placeholder="Data" value={date} onChange={(e)=>setDate(e.target.value)} className="rounded-md border px-3 py-2 bg-white dark:bg-gray-900" />
+          <input required type="datetime-local" placeholder="Data" value={dateTime} onChange={(e)=>setDateTime(e.target.value)} className="rounded-md border px-3 py-2 bg-white dark:bg-gray-900" />
         </div>
         <textarea required placeholder="Descrição" value={description} onChange={(e)=>setDescription(e.target.value)} className="w-full rounded-md border px-3 py-2 bg-white dark:bg-gray-900" />
         <div className="grid grid-cols-1 md:grid-cols-2 gap-3 items-center">

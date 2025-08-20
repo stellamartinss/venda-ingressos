@@ -15,7 +15,7 @@ function DashboardPage() {
   const [name, setName] = useState('')
   const [description, setDescription] = useState('')
   const [location, setLocation] = useState('')
-  const [date, setDate] = useState('')
+  const [dateTime, setDateTime] = useState('')
   const [image, setImage] = useState('')
   const [tickets, setTickets] = useState<TicketInput[]>([{ name: 'Pista', price: 50, quantity: 100 }])
 
@@ -78,7 +78,8 @@ function DashboardPage() {
         name,
         description,
         location,
-        date,
+        city: location,
+        dateTime,
         image: image || 'https://images.unsplash.com/photo-1521737604893-d14cc237f11d?q=80&w=1600&auto=format&fit=crop',
         category: 'Outros',
         tickets: tickets.map(t => ({
@@ -106,7 +107,7 @@ function DashboardPage() {
       }
       
       // Reset form
-      setName(''); setDescription(''); setLocation(''); setDate(''); setImage(''); 
+      setName(''); setDescription(''); setLocation(''); setDateTime(''); setImage(''); 
       setTickets([{ name: 'Pista', price: 50, quantity: 100 }])
     } catch (err) {
       setError(err instanceof Error ? err.message : 'Erro ao criar evento')
@@ -151,7 +152,7 @@ function DashboardPage() {
           <textarea required placeholder="Descrição" value={description} onChange={(e)=>setDescription(e.target.value)} className="w-full rounded-md border px-3 py-2 bg-white dark:bg-gray-900" />
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
             <input required placeholder="Local" value={location} onChange={(e)=>setLocation(e.target.value)} className="rounded-md border px-3 py-2 bg-white dark:bg-gray-900" />
-            <input required type="datetime-local" placeholder="Data" value={date} onChange={(e)=>setDate(e.target.value)} className="rounded-md border px-3 py-2 bg-white dark:bg-gray-900" />
+            <input required type="datetime-local" placeholder="Data" value={dateTime} onChange={(e)=>setDateTime(e.target.value)} className="rounded-md border px-3 py-2 bg-white dark:bg-gray-900" />
             </div>
           <input placeholder="URL da imagem (opcional)" value={image} onChange={(e)=>setImage(e.target.value)} className="w-full rounded-md border px-3 py-2 bg-white dark:bg-gray-900" />
           <div className="space-y-2">
@@ -199,7 +200,7 @@ function DashboardPage() {
               {events.map((e) => (
                 <li key={e.id} className="border rounded-md p-2">
                   <div className="font-medium">{e.name}</div>
-                  <div className="opacity-70">{e.location} • {e.date ? new Date(e.date).toLocaleString() : ''}</div>
+                  <div className="opacity-70">{e.location} • {e.dateTime ? new Date(e.dateTime).toLocaleString() : ''}</div>
                 </li>
               ))}
             </ul>

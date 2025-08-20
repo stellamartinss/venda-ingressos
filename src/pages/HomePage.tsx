@@ -47,7 +47,7 @@ function HomePage() {
 
   const filtered = useMemo(() => {
     return events.filter(e => {
-      const d = new Date(e.date).getTime()
+      const d = new Date(e.dateTime).getTime()
       const fromOk = dateFrom ? d >= new Date(dateFrom).getTime() : true
       const toOk = dateTo ? d <= new Date(dateTo).getTime() : true
       const cityName = e.location.split(',')[0].trim()
@@ -106,7 +106,7 @@ function HomePage() {
             <div className="p-4 space-y-2">
               <h3 className="font-medium">{ev.name}</h3>
               <p className="text-xs opacity-70">{ev.category}</p>
-              <p className="text-sm opacity-70">{ev.location} • {new Date(ev.date).toLocaleDateString()}</p>
+              <p className="text-sm opacity-70">{ev.location} • {new Date(ev.dateTime).toLocaleDateString()}</p>
               <Link to={`/evento/${ev.id}`} className="inline-block mt-2 px-4 py-2 rounded-md bg-indigo-600 text-white text-sm hover:bg-indigo-700">Ver mais</Link>
             </div>
           </div>

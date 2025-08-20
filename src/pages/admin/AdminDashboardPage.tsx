@@ -6,7 +6,7 @@ type AdminEvent = {
   name: string
   description: string
   location: string
-  date: string
+  dateTime: string
   image: string
   category: string
   tickets: Array<{ id: string; name: string; price: number; quantity: number }>
@@ -332,7 +332,7 @@ function AdminDashboardPage() {
                 <tr key={ev.id} className="border-t">
                   <td className="p-2">{ev.name}</td>
                   <td className="p-2">{ev.location}</td>
-                  <td className="p-2">{new Date(ev.date).toLocaleString()}</td>
+                  <td className="p-2">{new Date(ev.dateTime).toLocaleString()}</td>
                   <td className="p-2">{ev.category}</td>
                   <td className="p-2">
                     <button onClick={()=>removeEvent(ev.id)} className="text-xs px-2 py-1 rounded-md border">Remover</button>
@@ -370,7 +370,7 @@ function AdminDashboardPage() {
                     <td className="p-2">{origin}</td>
                     <td className="p-2">{ev.name}</td>
                     <td className="p-2">{ev.location}</td>
-                    <td className="p-2">{new Date(ev.date).toLocaleString()}</td>
+                    <td className="p-2">{new Date(ev.dateTime).toLocaleString()}</td>
                     <td className="p-2">{ev.category}</td>
                   </tr>
                 )

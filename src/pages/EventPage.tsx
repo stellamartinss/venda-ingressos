@@ -59,7 +59,7 @@ function EventPage() {
         <div className="lg:col-span-2 space-y-4">
           <h1 className="text-2xl font-semibold">{event.name}</h1>
           <p className="opacity-80">{event.description}</p>
-          <div className="text-sm opacity-70">{event.location} • {new Date(event.date).toLocaleString()} • {event.category}</div>
+          <div className="text-sm opacity-70">{event.location} • {new Date(event.dateTime).toLocaleString()} • {event.category}</div>
         </div>
         <div className="space-y-3">
           <h3 className="font-medium">Ingressos</h3>

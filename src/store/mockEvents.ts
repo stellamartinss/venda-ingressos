@@ -10,7 +10,7 @@ export type EventItem = {
   name: string
   description: string
   location: string
-  date: string
+  dateTime: string
   image: string
   category: string
   tickets: TicketType[]
@@ -22,7 +22,7 @@ const events: EventItem[] = [
     name: 'Festival de Música Urbana',
     description: 'O maior festival de música urbana com artistas nacionais e internacionais.',
     location: 'São Paulo, SP',
-    date: new Date(Date.now() + 1000 * 60 * 60 * 24 * 10).toISOString(),
+    dateTime: new Date(Date.now() + 1000 * 60 * 60 * 24 * 10).toISOString(),
     image: 'https://images.unsplash.com/photo-1514525253161-7a46d19cd819?q=80&w=1600&auto=format&fit=crop',
     category: 'Música',
     tickets: [
@@ -35,7 +35,7 @@ const events: EventItem[] = [
     name: 'Conferência de Tecnologia',
     description: 'Novidades em IA, Cloud e DevTools com palestrantes renomados.',
     location: 'Belo Horizonte, MG',
-    date: new Date(Date.now() + 1000 * 60 * 60 * 24 * 30).toISOString(),
+    dateTime: new Date(Date.now() + 1000 * 60 * 60 * 24 * 30).toISOString(),
     image: 'https://images.unsplash.com/photo-1551836022-d5d88e9218df?q=80&w=1600&auto=format&fit=crop',
     category: 'Tecnologia',
     tickets: [
@@ -48,7 +48,7 @@ const events: EventItem[] = [
     name: 'Mostra de Cinema Independente',
     description: 'Sessões especiais com diretores e debates.',
     location: 'Curitiba, PR',
-    date: new Date(Date.now() + 1000 * 60 * 60 * 24 * 45).toISOString(),
+    dateTime: new Date(Date.now() + 1000 * 60 * 60 * 24 * 45).toISOString(),
     image: 'https://images.unsplash.com/photo-1497015289639-54688650d173?q=80&w=1600&auto=format&fit=crop',
     category: 'Cinema',
     tickets: [

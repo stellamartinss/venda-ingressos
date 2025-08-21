@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react'
 import baseEvents from '../../store/mockEvents'
+import { TicketType } from '../../services/api'
 
 type AdminEvent = {
   id: string
@@ -9,7 +10,7 @@ type AdminEvent = {
   dateTime: string
   image: string
   category: string
-  tickets: Array<{ id: string; name: string; price: number; quantity: number }>
+  ticketTypes: TicketType[]
 }
 
 function AdminDashboardPage() {

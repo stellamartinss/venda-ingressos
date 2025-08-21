@@ -21,6 +21,7 @@ export type Event = {
   bannerUrl: string
   category: string
   organizerId: string
+  ticketTypes: TicketType[]
 }
 
 export type PaginatedResponse<T> = {
@@ -36,19 +37,15 @@ export type CreateEventRequest = {
   dateTime: string
   image?: string
   category: string
-  tickets: Array<{
-    name: string
-    price: number
-    quantity: number
-  }>
+  ticketTypes: TicketType[]
 }
 
 export type TicketType = {
-  id: string
+  id?: string
   name: string
   price: number
-  quantity: number
-  eventId: string
+  quantityTotal: number
+  eventId?: string
 }
 
 export type OrderItem = {
@@ -144,6 +141,7 @@ class ApiClient {
   }
 
   async createEvent(data: CreateEventRequest): Promise<Event> {
+    debugger
     return this.request<Event>('/events', {
       method: 'POST',
       body: JSON.stringify(data),

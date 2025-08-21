@@ -17,12 +17,15 @@ function EventPage() {
       if (!id) return
       try {
         setLoading(true)
-        const [eventData, ticketsData] = await Promise.all([
+        const [eventData] = await Promise.all([
           api.getEvent(id),
           api.getEventTickets(id)
         ])
         setEvent(eventData)
-        setTickets(ticketsData)
+        setTickets(eventData.ticketTypes || [])
+        if (eventData.ticketTypes.length > 0) {
+          setSelected(eventData.ticketTypes[0])
+        }
       } catch (err) {
         setError(err instanceof Error ? err.message : 'Erro ao carregar evento')
       } finally {
@@ -69,9 +72,9 @@ function EventPage() {
                 <div className="flex items-center justify-between">
                   <div>
                     <div className="font-medium">{t.name}</div>
-                    <div className="text-xs opacity-70">Qtd. disponível: {t.quantity}</div>
+                    <div className="text-xs opacity-70">Qtd. disponível: {t.quantityTotal}</div>
                   </div>
-                  <div className="font-semibold">R$ {t.price.toFixed(2)}</div>
+                  <div className="font-semibold">R$ {Number(t.price).toFixed(2)}</div>
                 </div>
               </button>
             ))}

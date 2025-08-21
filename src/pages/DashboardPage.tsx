@@ -82,13 +82,14 @@ function DashboardPage() {
         dateTime,
         image: image || 'https://images.unsplash.com/photo-1521737604893-d14cc237f11d?q=80&w=1600&auto=format&fit=crop',
         category: 'Outros',
-        tickets: tickets.map(t => ({
+        ticketTypes: tickets.map(t => ({
           name: t.name,
           price: Number(t.price),
-          quantity: Number(t.quantity)
+          quantityTotal: Number(t.quantity)
         }))
       }
-      
+
+    
       await api.createEvent(eventData)
       
       // Try to reload events after creating new one

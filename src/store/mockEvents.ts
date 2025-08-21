@@ -13,7 +13,7 @@ export type EventItem = {
   dateTime: string
   image: string
   category: string
-  tickets: TicketType[]
+  ticketTypes: TicketType[]
 }
 
 const events: EventItem[] = [
@@ -38,7 +38,7 @@ const events: EventItem[] = [
     dateTime: new Date(Date.now() + 1000 * 60 * 60 * 24 * 30).toISOString(),
     image: 'https://images.unsplash.com/photo-1551836022-d5d88e9218df?q=80&w=1600&auto=format&fit=crop',
     category: 'Tecnologia',
-    tickets: [
+    ticketTypes: [
       { id: 't1', name: 'Lote 1', price: 120, quantity: 150 },
       { id: 't2', name: 'Estudante', price: 60, quantity: 100 },
     ],
@@ -51,7 +51,7 @@ const events: EventItem[] = [
     dateTime: new Date(Date.now() + 1000 * 60 * 60 * 24 * 45).toISOString(),
     image: 'https://images.unsplash.com/photo-1497015289639-54688650d173?q=80&w=1600&auto=format&fit=crop',
     category: 'Cinema',
-    tickets: [
+    ticketTypes: [
       { id: 't1', name: 'Inteira', price: 40, quantity: 100 },
       { id: 't2', name: 'Meia', price: 20, quantity: 100 },
     ],

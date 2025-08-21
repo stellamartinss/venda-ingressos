@@ -35,7 +35,7 @@ export type CreateEventRequest = {
   description: string
   location: string
   dateTime: string
-  image?: string
+  bannerUrl?: string
   category: string
   ticketTypes: TicketType[]
 }
@@ -141,7 +141,6 @@ class ApiClient {
   }
 
   async createEvent(data: CreateEventRequest): Promise<Event> {
-    debugger
     return this.request<Event>('/events', {
       method: 'POST',
       body: JSON.stringify(data),

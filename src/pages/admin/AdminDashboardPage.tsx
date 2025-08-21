@@ -8,7 +8,7 @@ type AdminEvent = {
   description: string
   location: string
   dateTime: string
-  image: string
+  bannerUrl: string
   category: string
   ticketTypes: TicketType[]
 }

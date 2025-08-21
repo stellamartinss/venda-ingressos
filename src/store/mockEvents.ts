@@ -11,7 +11,7 @@ export type EventItem = {
   description: string
   location: string
   dateTime: string
-  image: string
+  bannerUrl: string
   category: string
   ticketTypes: TicketType[]
 }
@@ -23,9 +23,9 @@ const events: EventItem[] = [
     description: 'O maior festival de música urbana com artistas nacionais e internacionais.',
     location: 'São Paulo, SP',
     dateTime: new Date(Date.now() + 1000 * 60 * 60 * 24 * 10).toISOString(),
-    image: 'https://images.unsplash.com/photo-1514525253161-7a46d19cd819?q=80&w=1600&auto=format&fit=crop',
+    bannerUrl: 'https://images.unsplash.com/photo-1514525253161-7a46d19cd819?q=80&w=1600&auto=format&fit=crop',
     category: 'Música',
-    tickets: [
+    ticketTypes: [
       { id: 't1', name: 'Pista', price: 80, quantity: 200 },
       { id: 't2', name: 'Camarote', price: 180, quantity: 50 },
     ],
@@ -36,7 +36,7 @@ const events: EventItem[] = [
     description: 'Novidades em IA, Cloud e DevTools com palestrantes renomados.',
     location: 'Belo Horizonte, MG',
     dateTime: new Date(Date.now() + 1000 * 60 * 60 * 24 * 30).toISOString(),
-    image: 'https://images.unsplash.com/photo-1551836022-d5d88e9218df?q=80&w=1600&auto=format&fit=crop',
+    bannerUrl: 'https://images.unsplash.com/photo-1551836022-d5d88e9218df?q=80&w=1600&auto=format&fit=crop',
     category: 'Tecnologia',
     ticketTypes: [
       { id: 't1', name: 'Lote 1', price: 120, quantity: 150 },
@@ -49,7 +49,7 @@ const events: EventItem[] = [
     description: 'Sessões especiais com diretores e debates.',
     location: 'Curitiba, PR',
     dateTime: new Date(Date.now() + 1000 * 60 * 60 * 24 * 45).toISOString(),
-    image: 'https://images.unsplash.com/photo-1497015289639-54688650d173?q=80&w=1600&auto=format&fit=crop',
+    bannerUrl: 'https://images.unsplash.com/photo-1497015289639-54688650d173?q=80&w=1600&auto=format&fit=crop',
     category: 'Cinema',
     ticketTypes: [
       { id: 't1', name: 'Inteira', price: 40, quantity: 100 },

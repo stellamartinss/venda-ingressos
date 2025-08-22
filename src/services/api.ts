@@ -21,7 +21,8 @@ export type Event = {
   bannerUrl: string
   category: string
   organizerId: string
-  ticketTypes: TicketType[]
+  ticketTypes: TicketType[],
+  quantityTotal?: number,
 }
 
 export type PaginatedResponse<T> = {
@@ -45,6 +46,7 @@ export type TicketType = {
   name: string
   price: number
   quantityTotal: number
+  quantitySold?: number
   eventId?: string
 }
 
@@ -170,6 +172,19 @@ class ApiClient {
   // Reports
   async getOrganizerReport(): Promise<OrganizerReport> {
     return this.request<OrganizerReport>('/organizer/report')
+  }
+
+  async deleteEvent(id: string): Promise<void> {
+    await this.request<Event>(`/events/${id}`, {
+      method: 'DELETE',
+    })
+  }
+
+  async editEvent(id: string, data: Partial<CreateEventRequest>): Promise<Event> {
+    return this.request<Event>(`/events/${id}`, {
+      method: 'PUT',
+      body: JSON.stringify(data),
+    })
   }
 }
 

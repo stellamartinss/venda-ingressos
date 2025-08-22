@@ -1,6 +1,6 @@
 import { FormEvent, useEffect, useState } from 'react'
 import { useNavigate } from 'react-router-dom'
-import { api, CreateEventRequest } from '../services/api'
+import { api, CreateEventRequest } from '../../services/api'
 
 type TicketInput = { id?: string; name: string; price: number; quantity: number }
 

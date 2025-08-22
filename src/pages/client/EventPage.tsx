@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react'
 import { useNavigate, useParams } from 'react-router-dom'
-import { api, Event, TicketType } from '../services/api'
+import { api, Event, TicketType } from '../../services/api'
 
 function EventPage() {
   const { id } = useParams()

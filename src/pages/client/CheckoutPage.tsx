@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react'
 import { QRCodeCanvas } from 'qrcode.react'
-import { api, PurchaseRequest, Order } from '../services/api'
+import { api, PurchaseRequest, Order } from '../../services/api'
 
 function CheckoutPage() {
   const [order, setOrder] = useState<PurchaseRequest | null>(null)

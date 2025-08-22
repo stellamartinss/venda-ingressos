@@ -12,6 +12,7 @@ import NewEventPage from './pages/organizer/NewEventPage.tsx'
 import AdminLoginPage from './pages/admin/AdminLoginPage.tsx'
 import AdminDashboardPage from './pages/admin/AdminDashboardPage.tsx'
 import './index.css'
+import ClientArea from './pages/client/ClientArea.tsx'
 
 const router = createBrowserRouter([
   {
@@ -27,6 +28,7 @@ const router = createBrowserRouter([
       { path: 'organizador/novo', element: <NewEventPage /> },
       { path: 'admin/login', element: <AdminLoginPage /> },
       { path: 'admin', element: <AdminDashboardPage /> },
+      { path: 'cliente/painel', element: <ClientArea /> },
     ],
   },
 ])

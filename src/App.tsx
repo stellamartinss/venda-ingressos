@@ -25,9 +25,9 @@ function App() {
           <Link to="/" className="font-semibold text-lg">Venda Ingressos</Link>
           <nav className="flex items-center gap-4 text-sm">
             <Link to="/" className="hover:underline">Eventos</Link>
-            <Link to="/organizador/login" className="btn btn-primary">Sou organizador</Link>
-            <Link to="/admin" className="hover:underline">Admin</Link>
-            <Link to="/admin/login" className="hover:underline">Login Admin</Link>
+            <Link to="/organizador/login" className="btn btn-primary">Login</Link>
+            {/* <Link to="/admin" className="hover:underline">Admin</Link>
+            <Link to="/admin/login" className="hover:underline">Login Admin</Link> */}
             <button onClick={() => setDark(v=>!v)} className="border rounded-md px-2 py-1 text-xs">
               {dark ? 'Claro' : 'Escuro'}
             </button>

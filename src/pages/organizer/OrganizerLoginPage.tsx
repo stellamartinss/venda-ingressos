@@ -1,6 +1,12 @@
 import { useState } from 'react';
-import { Link, useNavigate } from 'react-router-dom';
+import { Link, useNavigate, useOutletContext } from 'react-router-dom';
 import { api } from '../../services/api';
+import { AuthData } from '../../App';
+
+export type AuthContextType = {
+    auth: AuthData;
+    setAuth: React.Dispatch<React.SetStateAction<AuthData>>;
+  };
 
 function OrganizerLoginPage() {
   const navigate = useNavigate();
@@ -9,6 +15,8 @@ function OrganizerLoginPage() {
   const [error, setError] = useState('');
   const [loading, setLoading] = useState(false);
 
+  const { setAuth } = useOutletContext<AuthContextType>();
+
   async function onSubmit(e: React.FormEvent) {
     e.preventDefault();
     setError('');
@@ -16,18 +24,18 @@ function OrganizerLoginPage() {
 
     try {
       const response = await api.login({ email, password });
+
       localStorage.setItem('authToken', response.token);
       localStorage.setItem('authUser', JSON.stringify(response.user));
-      console.log('Login successful:', response);
+
+      setAuth(response);
 
       if (response.user.role === 'ORGANIZER') {
         navigate('/organizador/painel');
-        return
+        return;
       }
 
       navigate('/cliente/painel');
-
-
     } catch (err) {
       setError(err instanceof Error ? err.message : 'Erro no login');
     } finally {

@@ -43,12 +43,47 @@ function CheckoutPage() {
   }
 
   // how the code is being generated
-  const code = JSON.stringify({
-    orderId: purchaseResult?.id,
-    eventId: order.eventId,
-    items: order.items,
-    ts: Date.now(),
-  });
+  // const code = JSON.stringify({
+  //   orderId: purchaseResult?.id,
+  //   eventId: order.eventId,
+  //   items: order.items,
+  //   ts: Date.now(),
+  // });
+
+  const generateQrCodes = () => {
+    return order.items.map((item) => {
+      const ticketType = event?.ticketTypes.find(
+        (e) => e.id === item.ticketTypeId
+      );
+      return (
+        <div key={item.ticketTypeId} className='mb-4'>
+          <h3 className='font-medium'>
+            {ticketType?.name} x {item.quantity}
+          </h3>
+          {[...Array(item.quantity)].map((_, idx) => {
+            return (
+              <>
+                <p className='text-sm'>Código: {purchaseResult?.id}-{order.eventId}{item.ticketTypeId}-${idx + 1}</p>
+                <QRCodeCanvas
+                  key={idx}
+                  value={JSON.stringify({
+                    orderId: purchaseResult?.id,
+                    eventId: order.eventId,
+                    ticketTypeId: item.ticketTypeId,
+                    ticketNumber: `${item.ticketTypeId}-${idx + 1}`,
+                    ts: Date.now(),
+                  })}
+                  size={150}
+                  includeMargin
+                  className='my-2'
+                />
+              </>
+            );
+          })}
+        </div>
+      );
+    });
+  };
 
   async function simulatePay() {
     if (!order) return;
@@ -73,19 +108,21 @@ function CheckoutPage() {
           <h2 className='font-medium mb-2'>Resumo</h2>
           <h1 className='text-2xl'>Evento: {event?.name}</h1>
           <p className='text-sm'>ID da compra: {order.eventId}</p>
-          <p className='text-lg opacity-70 mt-10'>
-            Ingressos:
-          </p>
+          <p className='text-lg opacity-70 mt-10'>Ingressos:</p>
           <div className='mt-3 text-sm'>
-            {order.items.map((item, idx) => (
-              <div key={idx}>
-                {
-                  event?.ticketTypes.find((e) => e.id === item.ticketTypeId)
-                    ?.name
-                }{' '}
-                x {item.quantity}
-              </div>
-            ))}
+            {order.items.map((item, idx) => {
+              const ticketType = event?.ticketTypes.find(
+                (e) => e.id === item.ticketTypeId
+              );
+              return (
+                <div key={idx}>
+                  {ticketType?.name} x {item.quantity} = R${' '}
+                  {ticketType
+                    ? (ticketType.price * item.quantity).toFixed(2)
+                    : '0.00'}
+                </div>
+              );
+            })}
           </div>
         </div>
         <div className='rounded-xl border p-4 bg-white dark:bg-gray-800'>
@@ -131,12 +168,13 @@ function CheckoutPage() {
             </p>
           ) : (
             <div className='space-y-3'>
-              <QRCodeCanvas
+              {/* <QRCodeCanvas
                 value={code}
                 size={220}
                 includeMargin
                 className='mx-auto'
-              />
+              /> */}
+              {generateQrCodes()}
               <p className='text-sm'>
                 Apresente este QR Code na entrada do evento.
               </p>

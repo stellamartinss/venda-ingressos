@@ -150,7 +150,7 @@ function EventPage() {
                   onChange={(e) => {
                     setSelected(t)
                     const value = Math.max(0, Number(e.target.value));
-                    updateQuantity(t.id, value);
+                    updateQuantity(String(t.id), value);
                   }}
                   className='w-20 rounded-md border px-2 py-1 bg-white dark:bg-gray-900'
                 />

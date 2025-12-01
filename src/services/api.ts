@@ -186,6 +186,10 @@ class ApiClient {
       body: JSON.stringify(data),
     })
   }
+
+  async getClientTickets(): Promise<Order[]> {
+    return this.request<Order[]>('/orders/client-tickets')
+  }
 }
 
 export const api = new ApiClient()

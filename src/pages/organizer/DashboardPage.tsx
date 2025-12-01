@@ -214,6 +214,17 @@ function DashboardPage() {
     title={selectedEvent?.name}
   />
 
+  useEffect(() => {
+    async function fetchClientTickets() {
+      try {
+        await api.getClientTickets();
+      } catch (err) {
+        // Optionally handle error
+      }
+    }
+    fetchClientTickets();
+  }, []);
+
   return (
     <div className='space-y-8'>
       <div className='flex items-center justify-between'>
